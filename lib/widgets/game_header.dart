@@ -6,6 +6,7 @@ class GameHeader extends StatelessWidget {
   final int score;
   final int timeLeft;
   final VoidCallback onReset;
+  final VoidCallback? onLeaderboard;
   final bool isSmallScreen;
 
   const GameHeader({
@@ -13,6 +14,7 @@ class GameHeader extends StatelessWidget {
     required this.score,
     required this.timeLeft,
     required this.onReset,
+    this.onLeaderboard,
     required this.isSmallScreen,
   });
 
@@ -43,11 +45,22 @@ class GameHeader extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        IconButton(
-          onPressed: onReset,
-          icon: const Icon(Icons.refresh),
-          color: Colors.white,
-          tooltip: 'Reset',
+        Row(
+          children: [
+            if (onLeaderboard != null)
+              IconButton(
+                onPressed: onLeaderboard,
+                icon: const Icon(Icons.leaderboard),
+                color: Colors.white,
+                tooltip: 'Leaderboard',
+              ),
+            IconButton(
+              onPressed: onReset,
+              icon: const Icon(Icons.refresh),
+              color: Colors.white,
+              tooltip: 'Reset',
+            ),
+          ],
         ),
       ],
     );

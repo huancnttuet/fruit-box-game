@@ -1,0 +1,8 @@
+{
+  "dart.env": {
+    "CHROME_EXECUTABLE": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+  },
+  "dart.flutterRunAdditionalArgs": [
+    "--web-browser-flag=--disable-web-security"
+  ]
+}

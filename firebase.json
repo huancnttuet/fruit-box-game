@@ -1,0 +1,25 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "fruit-box-game",
+          "appId": "1:962827526326:android:fbbd38a51b9fe4c8af8617",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "fruit-box-game",
+          "configurations": {
+            "android": "1:962827526326:android:fbbd38a51b9fe4c8af8617",
+            "ios": "1:962827526326:ios:f23c59540f61707caf8617",
+            "macos": "1:962827526326:ios:f23c59540f61707caf8617",
+            "web": "1:962827526326:web:7dc812dfe5f5d8eaaf8617",
+            "windows": "1:962827526326:web:985877c8d242b430af8617"
+          }
+        }
+      }
+    }
+  }
+}

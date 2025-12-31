@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "flutter_application_1 (Android)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "deviceId": "emulator-5554",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "flutter_application_1 (Chrome)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "deviceId": "chrome",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "flutter_application_1 (Edge)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "deviceId": "edge",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "flutter_application_1 (Windows)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "deviceId": "windows",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

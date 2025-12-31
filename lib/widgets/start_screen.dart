@@ -4,11 +4,13 @@ import '../constants/game_constants.dart';
 /// Start screen widget shown before game begins
 class StartScreen extends StatelessWidget {
   final VoidCallback onStart;
+  final VoidCallback? onLeaderboard;
   final bool isSmallScreen;
 
   const StartScreen({
     super.key,
     required this.onStart,
+    this.onLeaderboard,
     required this.isSmallScreen,
   });
 
@@ -62,6 +64,20 @@ class StartScreen extends StatelessWidget {
               ),
               child: const Text('Start Game'),
             ),
+            if (onLeaderboard != null) ...[
+              const SizedBox(height: 16),
+              TextButton.icon(
+                onPressed: onLeaderboard,
+                icon: const Icon(Icons.leaderboard, color: Colors.orange),
+                label: Text(
+                  'View Leaderboard',
+                  style: TextStyle(
+                    fontSize: isSmallScreen ? 14 : 16,
+                    color: Colors.orange,
+                  ),
+                ),
+              ),
+            ],
           ],
         ),
       ),

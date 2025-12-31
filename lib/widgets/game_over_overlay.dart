@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 class GameOverOverlay extends StatelessWidget {
   final int score;
   final VoidCallback onPlayAgain;
+  final VoidCallback? onLeaderboard;
   final bool isSmallScreen;
 
   const GameOverOverlay({
     super.key,
     required this.score,
     required this.onPlayAgain,
+    this.onLeaderboard,
     required this.isSmallScreen,
   });
 
@@ -44,21 +46,53 @@ class GameOverOverlay extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(height: 8),
+              Text(
+                'Your score has been saved!',
+                style: TextStyle(
+                  fontSize: isSmallScreen ? 12 : 14,
+                  color: Colors.grey,
+                ),
+              ),
               const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: onPlayAgain,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: isSmallScreen ? 24 : 32,
-                    vertical: isSmallScreen ? 12 : 16,
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButton(
+                    onPressed: onPlayAgain,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isSmallScreen ? 20 : 28,
+                        vertical: isSmallScreen ? 12 : 16,
+                      ),
+                    ),
+                    child: Text(
+                      'Play Again',
+                      style: TextStyle(fontSize: isSmallScreen ? 14 : 16),
+                    ),
                   ),
-                ),
-                child: Text(
-                  'Play Again',
-                  style: TextStyle(fontSize: isSmallScreen ? 16 : 18),
-                ),
+                  if (onLeaderboard != null) ...[
+                    const SizedBox(width: 12),
+                    ElevatedButton.icon(
+                      onPressed: onLeaderboard,
+                      icon: const Icon(Icons.leaderboard, size: 18),
+                      label: Text(
+                        'Ranking',
+                        style: TextStyle(fontSize: isSmallScreen ? 14 : 16),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        foregroundColor: Colors.white,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: isSmallScreen ? 16 : 24,
+                          vertical: isSmallScreen ? 12 : 16,
+                        ),
+                      ),
+                    ),
+                  ],
+                ],
               ),
             ],
           ),

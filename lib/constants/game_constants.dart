@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// Game configuration constants
 class GameConstants {
   // Grid settings
-  static const int gridRows = 16;
+  static const int gridRows = 10;
   static const int gridCols = 10;
 
   // Game rules
