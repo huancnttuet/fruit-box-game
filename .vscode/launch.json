@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "flutter_application_1 (Android)",
+      "name": "fruit_box_game (Android)",
       "type": "dart",
       "request": "launch",
       "program": "lib/main.dart",
@@ -11,7 +11,7 @@
       "cwd": "${workspaceFolder}"
     },
     {
-      "name": "flutter_application_1 (Chrome)",
+      "name": "fruit_box_game (Chrome)",
       "type": "dart",
       "request": "launch",
       "program": "lib/main.dart",
@@ -20,7 +20,7 @@
       "cwd": "${workspaceFolder}"
     },
     {
-      "name": "flutter_application_1 (Edge)",
+      "name": "fruit_box_game (Edge)",
       "type": "dart",
       "request": "launch",
       "program": "lib/main.dart",
@@ -29,7 +29,7 @@
       "cwd": "${workspaceFolder}"
     },
     {
-      "name": "flutter_application_1 (Windows)",
+      "name": "fruit_box_game (Windows)",
       "type": "dart",
       "request": "launch",
       "program": "lib/main.dart",
