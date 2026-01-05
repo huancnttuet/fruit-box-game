@@ -1,17 +1,15 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-/// Firebase configuration options.
+/// Firebase configuration options loaded from environment variables.
 ///
-/// IMPORTANT: Replace the placeholder values below with your actual Firebase project configuration.
-/// You can find these values in your Firebase Console:
-/// 1. Go to https://console.firebase.google.com
-/// 2. Select your project (or create a new one)
-/// 3. Click the gear icon (Settings) > Project settings
-/// 4. Scroll down to "Your apps" section
-/// 5. Click "Add app" and select Web (</>)
-/// 6. Register your app and copy the configuration values
+/// This approach keeps sensitive API keys out of version control.
+/// Make sure to:
+/// 1. Copy .env.example to .env
+/// 2. Fill in your actual Firebase values in .env
+/// 3. Never commit .env to version control
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -38,61 +36,60 @@ class DefaultFirebaseOptions {
     }
   }
 
-  /// TODO: Replace with your Firebase Web configuration
-
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAwjtQYbga6m6ouhozBKucuJKcpMaKPtHE',
-    appId: '1:962827526326:web:7dc812dfe5f5d8eaaf8617',
-    messagingSenderId: '962827526326',
-    projectId: 'fruit-box-game',
-    authDomain: 'fruit-box-game.firebaseapp.com',
-    storageBucket: 'fruit-box-game.firebasestorage.app',
-    measurementId: 'G-FJZ1T72TKG',
+  /// Web Configuration from environment variables
+  static FirebaseOptions get web => FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_WEB_API_KEY'] ?? '',
+    appId: dotenv.env['FIREBASE_WEB_APP_ID'] ?? '',
+    messagingSenderId: dotenv.env['FIREBASE_WEB_MESSAGING_SENDER_ID'] ?? '',
+    projectId: dotenv.env['FIREBASE_WEB_PROJECT_ID'] ?? '',
+    authDomain: dotenv.env['FIREBASE_WEB_AUTH_DOMAIN'] ?? '',
+    storageBucket: dotenv.env['FIREBASE_WEB_STORAGE_BUCKET'] ?? '',
+    measurementId: dotenv.env['FIREBASE_WEB_MEASUREMENT_ID'],
   );
 
-  /// Get these values from Firebase Console > Project Settings > Your apps > Web app
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDUASqAyS827sBYpWfWIGvbHzqIsuEIxvQ',
-    appId: '1:962827526326:android:fbbd38a51b9fe4c8af8617',
-    messagingSenderId: '962827526326',
-    projectId: 'fruit-box-game',
-    storageBucket: 'fruit-box-game.firebasestorage.app',
+  /// Android Configuration from environment variables
+  static FirebaseOptions get android => FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_ANDROID_API_KEY'] ?? '',
+    appId: dotenv.env['FIREBASE_ANDROID_APP_ID'] ?? '',
+    messagingSenderId: dotenv.env['FIREBASE_WEB_MESSAGING_SENDER_ID'] ?? '',
+    projectId: dotenv.env['FIREBASE_WEB_PROJECT_ID'] ?? '',
+    storageBucket: dotenv.env['FIREBASE_WEB_STORAGE_BUCKET'] ?? '',
   );
 
-  /// TODO: Replace with your Firebase Android configuration (if needed)
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDVqQ524QyCCCPajmnFZP8-E9utSu2C7sw',
-    appId: '1:962827526326:ios:f23c59540f61707caf8617',
-    messagingSenderId: '962827526326',
-    projectId: 'fruit-box-game',
-    storageBucket: 'fruit-box-game.firebasestorage.app',
-    iosBundleId: 'com.example.flutterApplication1',
+  /// iOS Configuration from environment variables
+  static FirebaseOptions get ios => FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_IOS_API_KEY'] ?? '',
+    appId: dotenv.env['FIREBASE_IOS_APP_ID'] ?? '',
+    messagingSenderId: dotenv.env['FIREBASE_WEB_MESSAGING_SENDER_ID'] ?? '',
+    projectId: dotenv.env['FIREBASE_WEB_PROJECT_ID'] ?? '',
+    storageBucket: dotenv.env['FIREBASE_WEB_STORAGE_BUCKET'] ?? '',
+    iosBundleId: dotenv.env['FIREBASE_IOS_BUNDLE_ID'] ?? '',
   );
 
-  /// TODO: Replace with your Firebase iOS configuration (if needed)
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDVqQ524QyCCCPajmnFZP8-E9utSu2C7sw',
-    appId: '1:962827526326:ios:f23c59540f61707caf8617',
-    messagingSenderId: '962827526326',
-    projectId: 'fruit-box-game',
-    storageBucket: 'fruit-box-game.firebasestorage.app',
-    iosBundleId: 'com.example.flutterApplication1',
+  /// macOS Configuration from environment variables
+  static FirebaseOptions get macos => FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_IOS_API_KEY'] ?? '',
+    appId: dotenv.env['FIREBASE_IOS_APP_ID'] ?? '',
+    messagingSenderId: dotenv.env['FIREBASE_WEB_MESSAGING_SENDER_ID'] ?? '',
+    projectId: dotenv.env['FIREBASE_WEB_PROJECT_ID'] ?? '',
+    storageBucket: dotenv.env['FIREBASE_WEB_STORAGE_BUCKET'] ?? '',
+    iosBundleId: dotenv.env['FIREBASE_IOS_BUNDLE_ID'] ?? '',
   );
 
-  /// TODO: Replace with your Firebase macOS configuration (if needed)
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAwjtQYbga6m6ouhozBKucuJKcpMaKPtHE',
-    appId: '1:962827526326:web:985877c8d242b430af8617',
-    messagingSenderId: '962827526326',
-    projectId: 'fruit-box-game',
-    authDomain: 'fruit-box-game.firebaseapp.com',
-    storageBucket: 'fruit-box-game.firebasestorage.app',
-    measurementId: 'G-3JZB883Y4D',
+  /// Windows Configuration from environment variables
+  static FirebaseOptions get windows => FirebaseOptions(
+    apiKey:
+        dotenv.env['FIREBASE_WINDOWS_API_KEY'] ??
+        dotenv.env['FIREBASE_WEB_API_KEY'] ??
+        '',
+    appId:
+        dotenv.env['FIREBASE_WINDOWS_APP_ID'] ??
+        dotenv.env['FIREBASE_WEB_APP_ID'] ??
+        '',
+    messagingSenderId: dotenv.env['FIREBASE_WEB_MESSAGING_SENDER_ID'] ?? '',
+    projectId: dotenv.env['FIREBASE_WEB_PROJECT_ID'] ?? '',
+    authDomain: dotenv.env['FIREBASE_WEB_AUTH_DOMAIN'] ?? '',
+    storageBucket: dotenv.env['FIREBASE_WEB_STORAGE_BUCKET'] ?? '',
+    measurementId: dotenv.env['FIREBASE_WINDOWS_MEASUREMENT_ID'],
   );
-
-  /// TODO: Replace with your Firebase Windows configuration (if needed)
 }
